@@ -27,5 +27,3 @@ Le chatbot utilise :
 ```bash
 pip install streamlit
 streamlit run app.py
-
-<img width="1046" height="771" alt="Capture d’écran 2026-04-15 à 19 59 10" src="https://github.com/user-attachments/assets/613bfaa7-d222-43f6-8b40-16747a7f8149" />
