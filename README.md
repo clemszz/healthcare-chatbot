@@ -22,7 +22,8 @@ Le chatbot utilise :
 
 ## Démo
 
-![Aperçu du chatbot](Capture d’écran 2026-04-15 à 19.59.10.png)
+<img width="1046" height="771" alt="screenshot-bot" src="https://github.com/user-attachments/assets/7719afd8-333e-461b-ba4f-1a410843501b" />
+
 
 👉 Lancer en local :
 
