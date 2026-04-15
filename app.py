@@ -4,10 +4,6 @@ from dataclasses import dataclass
 from typing import Optional
 import time
 
-# ══════════════════════════════════════════════════════════════════════════════
-# CONFIG UI
-# ══════════════════════════════════════════════════════════════════════════════
-
 st.set_page_config(
     page_title="Assistant Santé Travail",
     page_icon="🩺",
@@ -20,11 +16,7 @@ st.markdown("""
     padding-top: 2rem;
 }
 </style>
-""", unsafe_allow_html=True)
-
-# ══════════════════════════════════════════════════════════════════════════════
-# DATA
-# ══════════════════════════════════════════════════════════════════════════════
+""", unsafe_allow_html=True
 
 @dataclass
 class Intent:
@@ -97,9 +89,6 @@ Comment puis-je vous aider aujourd’hui ?"""
 
 SIMILARITY_THRESHOLD = 0.6
 
-# ══════════════════════════════════════════════════════════════════════════════
-# NLP
-# ══════════════════════════════════════════════════════════════════════════════
 
 def normalize(text: str) -> str:
     return text.lower().strip()
@@ -118,13 +107,11 @@ def similarity(a: str, b: str) -> float:
 def detect_intent(user_input: str) -> Optional[Intent]:
     normalized_input = normalize(user_input)
 
-    # 🔥 MATCH DIRECT PHRASE
     for intent in INTENTS:
         for keyword in intent.keywords:
             if keyword in normalized_input:
                 return intent
 
-    # 🔥 MATCH PAR MOTS (FUZZY)
     input_words = tokenize(normalized_input)
 
     best_intent = None
@@ -144,14 +131,10 @@ def detect_intent(user_input: str) -> Optional[Intent]:
     return None
 
 
-# ══════════════════════════════════════════════════════════════════════════════
-# RESPONSE ENGINE
-# ══════════════════════════════════════════════════════════════════════════════
-
 def generate_response(user_input: str) -> str:
     intent = detect_intent(user_input)
 
-    # 🔥 MINI MÉMOIRE (effet LLM)
+    # mini mémoire
     if "stress" in user_input.lower() and "manager" in user_input.lower():
         return """🧠 Vous évoquez un stress lié à votre environnement de travail.
 
@@ -169,9 +152,6 @@ Souhaitez-vous que je vous guide ?"""
     return DEFAULT_RESPONSE
 
 
-# ══════════════════════════════════════════════════════════════════════════════
-# SESSION
-# ══════════════════════════════════════════════════════════════════════════════
 
 if "messages" not in st.session_state:
     st.session_state.messages = [
@@ -179,19 +159,14 @@ if "messages" not in st.session_state:
     ]
 
 
-# ══════════════════════════════════════════════════════════════════════════════
-# UI
-# ══════════════════════════════════════════════════════════════════════════════
 
 st.title("🩺 Assistant Santé Travail")
 st.caption("Orientation et information santé au travail")
 
-# Chat history
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
-# Quick actions
 if len(st.session_state.messages) <= 3:
     st.markdown("### 💡 Actions rapides")
 
@@ -211,13 +186,11 @@ if len(st.session_state.messages) <= 3:
 else:
     user_input = None
 
-# Input
 text_input = st.chat_input("Décrivez votre situation...")
 
 if text_input:
     user_input = text_input
 
-# Processing
 if user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
 
@@ -239,6 +212,5 @@ if user_input:
     st.rerun()
 
 
-# Footer
 st.markdown("---")
 st.caption("💡 Démonstrateur technique — ne remplace pas un professionnel de santé")
