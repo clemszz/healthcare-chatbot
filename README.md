@@ -20,15 +20,6 @@ Les réponses restent volontairement simples et orientées action, par exemple :
 
 ---
 
-## Stack technique
-
-- Python
-- Streamlit (interface)
-- API Mistral (génération de texte)
-- python-dotenv (gestion des variables d’environnement)
-
----
-
 ## Aperçu du projet :
 
 <img width="934" height="601" alt="Capture d’écran 2026-04-15 à 21 39 26" src="https://github.com/user-attachments/assets/fe5e744b-bcd7-4191-8abb-07f53b670bf7" />
@@ -38,8 +29,14 @@ Les réponses restent volontairement simples et orientées action, par exemple :
 
 
 
+## Stack technique
 
-Pourquoi ce projet ?
+- Python
+- Streamlit (interface)
+- API Mistral (génération de texte)
+- python-dotenv (gestion des variables d’environnement)
+
+
 Ce projet m’a permis de travailler sur un cas d’usage concret : intégrer un modèle de langage dans un outil simple, utile et directement compréhensible en contexte professionnel.
 L’objectif était de rester pragmatique :
 une interface légère
