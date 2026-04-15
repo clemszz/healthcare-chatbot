@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 from dataclasses import dataclass
 from mistralai.client import MistralClient
 
-# ===== ENV =====
 load_dotenv()
 api_key = os.getenv("MISTRAL_API_KEY")
 
@@ -14,10 +13,8 @@ if not api_key:
 
 client = MistralClient(api_key=api_key)
 
-# ===== CONFIG =====
 st.set_page_config(page_title="Assistant Santé Travail", page_icon="🩺")
 
-# ===== STYLE (FIX LISIBILITÉ) =====
 st.markdown("""
 <style>
 .block-container {
@@ -55,7 +52,6 @@ html, body, [class*="css"] {
 </style>
 """, unsafe_allow_html=True)
 
-# ===== INTENTS =====
 @dataclass
 class Intent:
     name: str
@@ -78,7 +74,6 @@ INTENTS = [
 
 WELCOME = "Bonjour, comment puis-je vous aider ? 🙂"
 
-# ===== NLP =====
 def detect_intent(text):
     text = text.lower()
     for intent in INTENTS:
@@ -87,7 +82,6 @@ def detect_intent(text):
                 return intent
     return None
 
-# ===== LLM =====
 def generate_response(user_input):
     intent = detect_intent(user_input)
 
@@ -125,13 +119,11 @@ RÈGLES :
 
     return response.choices[0].message.content
 
-# ===== SESSION =====
 if "messages" not in st.session_state:
     st.session_state.messages = [
         {"role": "assistant", "content": WELCOME}
     ]
 
-# ===== UI =====
 st.title("🩺 Assistant Santé Travail")
 
 for msg in st.session_state.messages:
@@ -140,10 +132,8 @@ for msg in st.session_state.messages:
     else:
         st.markdown(f"<div class='name'>Assistant</div><div class='bot-bubble'>{msg['content']}</div>", unsafe_allow_html=True)
 
-# ===== INPUT =====
 user_input = st.chat_input("Décrivez votre situation...")
 
-# ===== PROCESS =====
 if user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
 
@@ -153,6 +143,5 @@ if user_input:
     st.session_state.messages.append({"role": "assistant", "content": reply})
     st.rerun()
 
-# ===== FOOTER =====
 st.markdown("---")
 st.caption("Assistant interne - orientation uniquement")
