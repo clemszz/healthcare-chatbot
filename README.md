@@ -22,6 +22,8 @@ Le chatbot utilise :
 
 ## Démo
 
+![Aperçu du chatbot](Capture d’écran 2026-04-15 à 19.59.10.png)
+
 👉 Lancer en local :
 
 ```bash
