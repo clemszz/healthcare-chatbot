@@ -36,7 +36,7 @@ Les réponses restent volontairement simples et orientées action, par exemple :
 - API Mistral (génération de texte)
 - python-dotenv (gestion des variables d’environnement)
 
-*Le choix de Mistral s’explique par son positionnement européen et ses garanties en matière de conformité RGP mais l’utilisation de données potentiellement sensibles impose néanmoins une vigilance particulière et un encadrement adapté.*
+*Le choix de Mistral s’explique par son positionnement européen et ses garanties en matière de conformité RGPD. Cependant,  l’utilisation de données potentiellement sensibles impose néanmoins une vigilance particulière et un encadrement adapté.*
 
 Ce projet m’a permis de travailler sur un cas d’usage concret : intégrer un modèle de langage dans un outil simple, utile et directement compréhensible en contexte professionnel.
 L’objectif était de rester pragmatique :
